@@ -20,6 +20,8 @@ const deleteFiles = () => {
 	fs.unlink(path.join(__dirname, 'public/uploads', 'image2.png'), () => {});
 }
 
+
+
 // express middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -41,15 +43,12 @@ app.post('/upload',
 		
 		// save it the folder
 		const filepath = path.join(__dirname, 'public/uploads', file.name);
-		file.mv(path.join(__dirname, 'public/uploads', 'image.png'), err => {
-			if (err) 
-				return res.status(500).json({ status: 'error', message: err });
-			cropImage();
-			setTimeout(deleteFiles, FIVE_MINUTES);
-		})
+		file.mv(path.join(__dirname, 'public/uploads', 'image.png'))
+			.then(() => cropImage())
+			//.then(() => predict())
+			.then(() => console.log('got here'));
 		
 		return;
-		//return res.json({ status: 'success', message: file.name });
 	}
 );
 
