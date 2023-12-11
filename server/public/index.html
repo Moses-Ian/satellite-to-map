@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>Satellite to Map</title>
+</head>
+
+<body>
+  <h1 style="display:block">Satellite to Map</h1>
+	<h2>A Deep Learning AI Created by Ian Moses</h2>
+	<p>This AI was created as part of the coursework of <a href="https://cognizant.udemy.com/course/generative-adversarial-networks-gans-complete-guide">Generative Adversarial Networks (GANs): Complete Guide</a> on Udemy.</p>
+	<p>The purpose of this AI is to take a satellite image (left) and generate a street view image (middle). The AI is capable of generating the image on the right. Three different examples are shown.</p>
+	<img src="./1.png" width="30%" style="display:block"></img>
+	<img src="2.png" width="30%" style="display:block"></img>
+	<img src="3.png" width="30%" style="display:block"></img>
+	<p>I think that this is the best I can reasonably expect. Some of the roads are impossible to see in the satellite image. And it's pretty difficult to tell the difference between a highway and a road based on the image alone. You need more information to really make that distinction.</p>
+	<p>Personally, I think that the AI is better at identifying green patches than the actual map images are.</p>
+	<p>The AI also struggles to interpret buildings and other objects. To be fair, the map views totally ignore a lot of that stuff, so the AI doesn't really have a great basis to learn from.</p>
+	<div>
+		<h3>Try it yourself!</h3>
+		<ol>
+			<li><a href="https://www.google.com/maps/@40.7684209,-74.0623564,6676m/data=!3m1!1e3?entry=ttu" target="_blank">Open Google Maps.</a> You can use other map software, but it might not work as well.
+			<li>In the bottom left, hover over <b>Layers</b>, click <b>More</b>, and uncheck <b>Labels</b>.</li>
+			<li>Move to the area that you want, and zoom in to the resolution that looks about the same as in the images above.</li>
+			<li>Use whatever screenshot tool you have to take a screenshot. Be aware that the AI will crop the image to 255 pixels by 255 pixels.</li>
+			<li>Upload your image.</li>
+			<li>Click <b>Generate Map</b></li>
+		</ol>
+		<form action="/upload" method="post" enctpy="multipart/form-data">
+			<label for="file">File</label>
+			<input id="file" name="file" type="file" />
+			<button>Upload</button>
+		</form>
+	</div>
+	<div id="cool-thing">
+		<img src="./../uploads/image2.png" />
+	</div>
+	<script src="script.js"></script>
+</body>
+
+</html>
