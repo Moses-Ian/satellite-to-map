@@ -1,9 +1,11 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 const fileUpload = require('express-fileupload');
 const cropImage = require('./cropImage');
 const app = express();
 const PORT = process.env.PORT || 3001;
+const FIVE_MINUTES = 5 * 60 * 1000;
 
 const handleError = (err, res) => {
 	console.log(err);
@@ -12,6 +14,11 @@ const handleError = (err, res) => {
     .contentType("text/plain")
     .end("Oops! Something went wrong!");
 };
+
+const deleteFiles = () => {
+	fs.unlink(path.join(__dirname, 'public/uploads', 'image.png'), () => {});
+	fs.unlink(path.join(__dirname, 'public/uploads', 'image2.png'), () => {});
+}
 
 // express middleware
 app.use(express.json());
@@ -38,6 +45,7 @@ app.post('/upload',
 			if (err) 
 				return res.status(500).json({ status: 'error', message: err });
 			cropImage();
+			setTimeout(deleteFiles, FIVE_MINUTES);
 		})
 		
 		return;
