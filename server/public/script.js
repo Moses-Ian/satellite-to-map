@@ -14,5 +14,7 @@ function handleSubmit(event) {
 	});
 	
 	event.preventDefault();
-	window.location.href = '/';
+	setTimeout(() => {
+		window.location.href = '/';
+	}, 1000);
 }

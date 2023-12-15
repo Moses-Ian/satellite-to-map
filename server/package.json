@@ -12,9 +12,10 @@
   "license": "ISC",
   "dependencies": {
     "@img/sharp-win32-x64": "^0.33.0",
+    "@tensorflow/tfjs-node": "^1.7.4",
     "express": "^4.18.2",
     "express-fileupload": "^1.4.3",
-    "jimp": "^0.22.10",
+    "node-gyp": "^10.0.1",
     "sharp": "^0.33.0"
   },
   "devDependencies": {
