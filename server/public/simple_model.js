@@ -8,6 +8,8 @@ let loadModel = async () => {
 let preProcess = () => {
 	// get the image
 	const image = document.getElementById('image');
+	if (image == null)
+		return;
 	
 	// turn it into a tensor
 	let imageTensor = tf.browser.fromPixels(image);
@@ -28,11 +30,13 @@ let preProcess = () => {
 }
 
 loadModel()
-	.then(() => {
+	.then((result, error) => {
+		if (result == null)
+			return;
 		const imageTensor = preProcess();
 		
-		let result = model.predict(imageTensor);
-		result = tf.squeeze(result);
+		let output = model.predict(imageTensor);
+		output = tf.squeeze(output);
 
-		tf.browser.toPixels(result, canvas);
+		tf.browser.toPixels(output, canvas);
 	});

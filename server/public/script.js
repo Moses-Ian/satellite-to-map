@@ -1,20 +1,19 @@
 const form = document.querySelector('form');
 form.addEventListener('submit', handleSubmit);
+const inputElement = document.getElementById('file');
+const satelliteImageElement = document.getElementById('satelliteImage');
 
 function handleSubmit(event) {
-	const form = event.currentTarget;
-  const url = new URL(form.action);
-	const myFile = document.getElementById('file').files[0];
-	let formData = new FormData(form);
-	formData.append(myFile.name, myFile);
-	
-  fetch(url, {
-		method: "post",
-		body: formData
-	});
-	
 	event.preventDefault();
-	setTimeout(() => {
-		window.location.href = '/';
-	}, 1000);
+	
+	const form = event.currentTarget;
+  const myFile = inputElement.files[0];
+	
+	var reader = new FileReader();
+  reader.onload = () =>
+    satelliteImageElement.src = reader.result;
+
+  reader.readAsDataURL(myFile);	
+	
+	
 }
