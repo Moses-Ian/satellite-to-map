@@ -1,7 +1,7 @@
 const form = document.querySelector('form');
 form.addEventListener('submit', handleSubmit);
 const inputElement = document.getElementById('file');
-const satelliteImageElement = document.getElementById('satelliteImage');
+const uploadImageElement = document.getElementById('satelliteImage');
 
 function handleSubmit(event) {
 	event.preventDefault();
@@ -11,9 +11,9 @@ function handleSubmit(event) {
 	
 	var reader = new FileReader();
   reader.onload = () =>
-    satelliteImageElement.src = reader.result;
+    uploadImageElement.src = reader.result;
 
   reader.readAsDataURL(myFile);	
 	
-	
+	setTimeout(predict, 1000);
 }
