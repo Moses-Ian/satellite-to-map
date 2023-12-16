@@ -7,9 +7,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#000000" />
   <title>Satellite to Map</title>
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"> </script>
 </head>
 
 <body>
+	<div style='overflow:hidden;width:256px;height:256px'>
+		<img id="image" src="example.png" />
+	</div>
+	<canvas id="mapImage" width="256px" height="256" ></canvas>
+	
   <h1 style="display:block">Satellite to Map</h1>
 	<h2>A Deep Learning AI Created by Ian Moses</h2>
 	<p>This AI was created as part of the coursework of <a href="https://cognizant.udemy.com/course/generative-adversarial-networks-gans-complete-guide">Generative Adversarial Networks (GANs): Complete Guide</a> on Udemy.</p>
@@ -40,6 +46,7 @@
 		<img src="./../uploads/image2.png" />
 	</div>
 	<script src="script.js"></script>
+	<script src="simple_model.js"></script>
 </body>
 
 </html>

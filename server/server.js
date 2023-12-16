@@ -3,8 +3,6 @@ const path = require('path');
 const fs = require('fs');
 const fileUpload = require('express-fileupload');
 const cropImage = require('./cropImage');
-const tf = require("@tensorflow/tfjs");
-const tfn = require("@tensorflow/tfjs-node");
 
 // make the server
 const app = express();
@@ -34,14 +32,6 @@ app.use(express.static(__dirname + '/public'));
 const filePayloadExists = require('./middleware/filesPayloadExists');
 const fileExtLimiter = require('./middleware/fileExtLimiter');
 const fileSizeLimiter = require('./middleware/fileSizeLimiter');
-
-// the model
-const handler = tfn.io.fileSystem("./path/to/your/model.json");
-const model = tf.loadLayersModel(handler);
-
-
-
-
 
 app.post('/upload', 
 	fileUpload({ createParentPath: true }),
